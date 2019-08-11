@@ -3,22 +3,24 @@ import logo from './logo.svg';
 import './App.css';
 import './index.js';
 var r=0;
-
+document.addEventListener("DOMContentLoaded", function() {
+  oclick();
+});
 function oclick(){
-  document.getElementById("news1").removeChild("news");
+  if(r>0){
+  var elem = document.getElementById("news");
+elem.parentNode.removeChild(elem);
+  }
   var xhr=new XMLHttpRequest();
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
   xhr.open("GET", proxyurl+"https://api.currentsapi.services/v1/latest-news", true);
-  xhr.setRequestHeader("Authorization", "U-oPpqajoJHIIs7hFstEEfTsNU_WA9ZBg225A2zZGIhXjLRc");
+  xhr.setRequestHeader("Authorization", "pUfyVZD9wQ_cEvo9VlkXt5VjY-3w_OM8zvG993ksZpSJFVAY");
   xhr.send(null);
   xhr.onreadystatechange = function() {
    if (this.readyState == 4 && this.status == 200) {
    
   var a=JSON.parse(this.responseText);
- if(r>0){
-  var e=document.getElementById("news");
-  document.getElementById.removeChild(e);
- }
+
   var main=document.createElement("div");
   main.setAttribute("id","news");
   document.getElementById("news1").appendChild(main);
